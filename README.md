@@ -1,48 +1,78 @@
-# Reproducibility package
+# Privacy-Constrained Cooperative Values: Shapley Identification under Partial Information
 
-This branch contains only the code and retained outputs needed to reproduce or
-audit the empirical results reported in the paper. It deliberately excludes
-the manuscript, review records, exploratory experiments, superseded analyses,
-private workspace metadata, and datasets.
+Reproducibility code for the empirical results reported in the paper.
 
-## Reported results covered
+This branch is a standalone code package. It does **not** contain the paper,
+LaTeX sources, PDFs, bibliography files, reviews, or author information. It
+contains only the experiment code, frozen configurations, public-data hashes,
+minimal processed inputs, and retained outputs needed to reproduce or audit the
+reported results.
 
-| Paper result | Code | Retained output |
-| --- | --- | --- |
-| Fashion-MNIST common-scaling slopes and figure data | `experiments/nonlinear-confirmatory/` | `results/scaling-confirmatory-20260903/` |
-| UCI-HAR development certificates at epsilon 0.5 | `experiments/uci-har-logistic-curvature/` | `results/uci-har-logistic-curvature-20260910/` |
-| MHEALTH confirmation certificates at epsilon 0.5 | `experiments/mhealth-logistic-curvature-confirmation/` | `results/mhealth-logistic-curvature-confirmation-20260910/` |
-| Scope check for the positive third-order model on 273 retained games | audit script | `results/positive-three-feasibility-20260905/` |
+## Results covered
 
-The positive-third-order input and output contain exactly the 273 retained games
-used by the paper. The excluded 45-game CIFAR diagnostic is not present.
+The package covers exactly the empirical results retained in the paper:
 
-## Quick verification from retained outputs
+1. **Fashion-MNIST scaling:** midpoint error under five common update scales,
+   including the reported median absolute and relative slopes of 3.125 and
+   2.110.
+2. **UCI-HAR development experiment:** curvature certificates at
+   `epsilon = 0.5`, including interval width, sign, ranking, and top-client
+   decisions.
+3. **MHEALTH confirmation experiment:** the prespecified certificate result at
+   `epsilon = 0.5`, including the 1.24% median relative width and all reported
+   decision counts.
+4. **Positive third-order scope check:** feasibility on the 273 retained games,
+   of which 6 admit a positive third-order extension and 0 of those 6 contain
+   the observed exact Shapley vector in every coordinate interval.
 
-Python 3.11 or newer is sufficient:
+Exploratory, superseded, and out-of-scope experiments are excluded. In
+particular, the 45-game CIFAR diagnostic is not present.
+
+## Quick verification
+
+Python 3.11 or newer is sufficient to audit the retained outputs:
 
 ```bash
 python3 scripts/reproduce_paper_results.py
 ```
 
-This command recomputes every number in the paper's empirical section from the
-retained CSV files, checks the two plotted data tables, and exits nonzero on a
-mismatch. It does not need network access or the source datasets.
+The script independently recomputes every number reported in the empirical
+section from the retained CSV files. It also checks the data used for the two
+empirical figures and exits with a nonzero status if any value differs.
 
-To verify file integrity as well:
+Verify the complete package against its checksum manifest with:
 
 ```bash
 shasum -a 256 -c MANIFEST.sha256
 ```
 
+## Repository layout
+
+```text
+experiments/
+  nonlinear-confirmatory/                  Fashion-MNIST scaling code
+  uci-har-logistic-curvature/              UCI-HAR certificate code
+  mhealth-logistic-curvature-confirmation/ MHEALTH confirmation code
+inputs/
+  positive_three_endpoints.json            273-game scope-check input
+results/                                   Retained machine-readable outputs
+figures/data/                              Audited data tables, without paper files
+scripts/
+  reproduce_paper_results.py               One-command result audit
+  analyze_positive_three_feasibility.py    Scope-check analysis
+  plot_midpoint_scaling.py                 Scaling-figure data generation
+```
+
 ## Re-running the experiments
 
-The experiments use public datasets that are not redistributed here. Download
-the canonical Fashion-MNIST, UCI-HAR, and MHEALTH releases, then verify them
-against the checked-in input hashes before running anything. Detailed staged
-commands are in each experiment directory.
+The source datasets are public but are not redistributed. Download the
+canonical Fashion-MNIST, UCI-HAR, and MHEALTH releases and verify them against
+the checked-in hashes before running an experiment.
 
-Fashion-MNIST scaling:
+### Fashion-MNIST scaling
+
+The environment is pinned by `experiments/nonlinear-confirmatory/uv.lock`.
+From the repository root, run:
 
 ```bash
 uv run --directory experiments/nonlinear-confirmatory --frozen python \
@@ -52,27 +82,52 @@ uv run --directory experiments/nonlinear-confirmatory --frozen python \
   --output reproduced/scaling-confirmatory
 ```
 
-The UCI-HAR and MHEALTH experiments are deliberately split into profile
-preparation, certificate construction, and held-out evaluation. Follow their
-READMEs in order. Complete coalition enumeration is used only to audit the
-endpoint-based scores and certificates.
+### UCI-HAR development certificates
 
-The positive-third-order scope check can be regenerated independently from its
-compact endpoint input:
+The UCI-HAR pipeline separates profile preparation, certificate construction,
+and held-out evaluation. Follow the commands in
+`experiments/uci-har-logistic-curvature/README.md` in order. The official input
+hashes are in `experiments/uci-har-diagnostic/input-hashes.json`.
+
+### MHEALTH confirmation certificates
+
+The confirmation pipeline uses the same staged design. Follow
+`experiments/mhealth-logistic-curvature-confirmation/README.md`. The archive and
+extracted-file hashes are in that directory's `input-hashes.json`.
+
+### Positive third-order scope check
+
+This analysis is self-contained because its 273 endpoint observations are
+included as a compact processed input:
 
 ```bash
 python3 scripts/analyze_positive_three_feasibility.py \
   --output reproduced/positive-three-feasibility
 ```
 
-## Scope and anonymity
+## Tests
 
-No manuscript source, author list, acknowledgments, review material,
-machine-local username, or private dataset is included. Subject identifiers
-appearing in the public UCI datasets and deterministic seed identifiers are
-experimental variables, not personal metadata added by the researchers.
+The three experiment bundles include unit tests. A single pinned environment
+can run all of them:
 
-The retained output bundles include environment versions and temporary generic
-paths needed for provenance. They contain no home-directory paths. Before a
-public anonymous release, also inspect Git hosting metadata and commit authors,
-because file-level checks cannot anonymize the hosting account itself.
+```bash
+uv run --directory experiments/nonlinear-confirmatory --frozen \
+  python test_bundle.py
+
+uv run --directory experiments/nonlinear-confirmatory --frozen \
+  python ../../experiments/uci-har-logistic-curvature/test_bundle.py
+
+uv run --directory experiments/nonlinear-confirmatory --frozen \
+  python ../../experiments/mhealth-logistic-curvature-confirmation/test_bundle.py
+```
+
+Complete coalition enumeration is used only to establish exact experimental
+ground truth. The evaluated midpoint scores and certificates receive only the
+endpoint observation and the public controls stated by each experiment.
+
+## Data and anonymity
+
+No private dataset is included. Numeric subject identifiers come from the
+public UCI datasets and deterministic seeds are experimental variables. The
+files contain no author names, acknowledgments, home-directory paths, account
+identifiers, or manuscript source.
