@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "status": "frozen bounded-logistic certificate experiment; not yet executed",
+  "hypothesis": "A curvature-controlled evaluator with enforced public clipping yields informative Shapley intervals at the natural full-update scale on useful UCI-HAR rounds.",
+  "decision": "Treat curvature certificates as operationally promising only if every predeclared primary-epsilon gate passes.",
+  "question": "Does changing the evaluator geometry, while retaining natural subject-clients and the endpoint observation, close the gap between realized and certifiable curvature?",
+  "design": {
+    "games": 20,
+    "clients_per_game": 8,
+    "coalitions_per_game": 256,
+    "replication_unit": "a deterministic hash-selected assignment of 21 official-training subjects into 13 checkpoint subjects and 8 player subjects",
+    "model": "multinomial logistic regression with parameters entering logits linearly",
+    "utility": "mean negative multiclass cross-entropy on the official test split",
+    "features": "checkpoint-only standardization, appended bias coordinate, then per-example projection to Euclidean norm at most one",
+    "updates": "five full-batch local gradient steps followed by enforced Frobenius clipping at 0.2 before public sample-size weighting",
+    "scales": [0.25, 0.5, 1.0],
+    "primary_scale": 1.0
+  },
+  "information_regimes": {
+    "endpoint": "The existing singleton, leave-one-out, and grand-coalition observation is unchanged.",
+    "authorized_certificate": "The scorer uses the public feature radius, public local-update clipping limit, and public sample-size weights. It receives no update coordinate, direction, test outcome, interior coalition value, or Shapley value.",
+    "oracle_evaluation": "The complete 256-coalition games are opened only after certificates are constructed, to measure coverage, width, signs, pairs, and top-client decisions."
+  },
+  "bound": {
+    "constant": "For negative cross-entropy composed with linear logits and unit-norm features, the mixed third-derivative operator norm is at most 1/sqrt(2).",
+    "radius": "R_i = epsilon^3 L a_i sum_{j<k; j,k!=i} a_j a_k / 6, with a_i equal to the enforced local clip multiplied by the public sample-size weight.",
+    "efficiency": "Intersect each interval box with sum_i phi_i = v(N)."
+  },
+  "falsification_rule": "The primary hypothesis is contradicted unless all seven gates in config.json pass at epsilon=1.0. Scaled results are reported but cannot rescue the primary decision.",
+  "evidence_scope": "A pass would establish feasibility for this deliberately restricted evaluator and clipping protocol, not for neural evaluators generally and not from endpoints alone without the additional public bounds."
+}

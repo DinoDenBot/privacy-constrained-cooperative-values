@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "status": "frozen before coalition evaluation",
+  "hypothesis": "At epsilon 0.5, the authorized public-cap curvature certificate passes all previously used informativeness gates on a separate natural-client dataset.",
+  "decision": "Treat the half-scale bounded-logistic result as externally replicated only if every unchanged gate passes.",
+  "dataset": "UCI MHEALTH, CC BY 4.0, ten volunteers performing twelve activities",
+  "design": {
+    "profiles": 20,
+    "clients": 8,
+    "coalitions_per_profile": 256,
+    "roles": "Twenty hash-selected ordered checkpoint/test subject pairs; the remaining eight subjects are clients.",
+    "preprocessing": "Exclude null-activity rows, retain every tenth labeled row, standardize from the checkpoint subject only, append a bias coordinate, and project each example to norm at most one.",
+    "model": "Multinomial logistic regression trained by deterministic full-batch gradient descent.",
+    "utility": "Held-out-subject mean negative multiclass cross-entropy.",
+    "epsilon": 0.5,
+    "local_update_clip": 0.2,
+    "curvature_bound": "1/sqrt(2) in Frobenius parameter norm"
+  },
+  "fixed_from_uci_har": [
+    "model class",
+    "feature radius",
+    "local update clip",
+    "checkpoint and local optimizer settings",
+    "epsilon",
+    "curvature formula",
+    "efficiency tightening",
+    "all seven decision thresholds"
+  ],
+  "information": "Certificates use only public feature and clipping bounds and public sample weights. Designated test-subject outcomes, update directions, coalition values, and Shapley values are excluded from construction.",
+  "falsification_rule": "Any failed gate contradicts the replication hypothesis; no threshold or dataset-specific scale adjustment is permitted after outcomes are opened.",
+  "scope": "The 20 profiles overlap in their ten subjects and therefore test cross-dataset transfer of the mechanism, not prevalence across independent populations."
+}

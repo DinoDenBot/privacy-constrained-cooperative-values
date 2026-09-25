@@ -1,0 +1,57 @@
+{
+  "absolute_slope_support_interval": [
+    2.5,
+    3.5
+  ],
+  "bootstrap_replicates": 5000,
+  "bootstrap_seed": 12092026,
+  "clients": 8,
+  "dataset": "fashion-mnist",
+  "dirichlet_alphas": [
+    0.1,
+    0.5,
+    10.0
+  ],
+  "downsample_factor": 4,
+  "evaluation_examples": 500,
+  "global_epochs": [
+    0,
+    15
+  ],
+  "global_learning_rate": 0.1,
+  "hidden_units": 24,
+  "identity_tolerance": 1e-10,
+  "initialization_seed": 11092026,
+  "l2": 0.0001,
+  "local_epochs": [
+    20
+  ],
+  "local_learning_rate": 0.1,
+  "material_high_order_mass": 0.05,
+  "material_relative_gap": 0.02,
+  "max_output_bytes": 2147483648,
+  "minimum_client_examples": 100,
+  "partition_seeds": [
+    3109,
+    3253,
+    3301,
+    3463,
+    3559
+  ],
+  "relative_slope_support_interval": [
+    1.5,
+    2.5
+  ],
+  "scaling_fit_max_scale": 0.5,
+  "scaling_gap_floor": 1e-14,
+  "scaling_primary_utility": "negative_brier",
+  "schema_version": 2,
+  "train_examples": 12000,
+  "update_scales": [
+    0.0625,
+    0.125,
+    0.25,
+    0.5,
+    1.0
+  ]
+}

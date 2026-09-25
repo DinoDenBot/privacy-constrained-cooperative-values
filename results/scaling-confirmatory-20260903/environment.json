@@ -1,0 +1,7 @@
+{
+  "numpy": "2.3.2",
+  "platform": "macOS-26.2-arm64-arm-64bit",
+  "python": "3.12.13 (main, Apr  7 2026, 21:09:58) [Clang 22.1.1 ]",
+  "scipy": "1.16.1",
+  "sklearn": "1.7.1"
+}

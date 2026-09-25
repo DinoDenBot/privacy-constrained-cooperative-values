@@ -1,0 +1,102 @@
+{
+  "analysis": "boundary-only positive 3-additive feasibility and sharp intervals",
+  "by_phase": {
+    "development": {
+      "exact_shapley_fully_covered": 0,
+      "failed_condition_counts": {
+        "nonempty_coordinate_intervals": 231,
+        "nonnegative_pair_mass": 120,
+        "nonnegative_singletons": 29,
+        "nonnegative_triple_mass": 188,
+        "slice_lower_bound": 216,
+        "slice_upper_bound": 218
+      },
+      "feasible_fraction": 0.02531645569620253,
+      "feasible_games": 6,
+      "games": 237,
+      "max_player_width": {
+        "max": 1.9705945258299655e-05,
+        "median": 4.6127256870653194e-07,
+        "min": 1.4004689080551053e-07
+      },
+      "mean_player_width": {
+        "max": 1.692453578461439e-05,
+        "median": 4.6127256870653194e-07,
+        "min": 1.4004689080551053e-07
+      },
+      "normalized_sum_width": {
+        "max": 0.005589611324750803,
+        "median": 0.0007393757513446508,
+        "min": 0.00022164066472437708
+      },
+      "sum_player_width": {
+        "max": 0.00013539628627691513,
+        "median": 3.6901805496522555e-06,
+        "min": 1.1203751264440842e-06
+      }
+    },
+    "external_primary": {
+      "failed_condition_counts": {
+        "nonempty_coordinate_intervals": 20,
+        "nonnegative_pair_mass": 20,
+        "nonnegative_singletons": 20,
+        "nonnegative_triple_mass": 5,
+        "slice_lower_bound": 20,
+        "slice_upper_bound": 20
+      },
+      "feasible_fraction": 0.0,
+      "feasible_games": 0,
+      "games": 20
+    },
+    "natural_silo": {
+      "failed_condition_counts": {
+        "nonempty_coordinate_intervals": 16,
+        "nonnegative_pair_mass": 8,
+        "nonnegative_singletons": 16,
+        "nonnegative_triple_mass": 5,
+        "slice_lower_bound": 13,
+        "slice_upper_bound": 13
+      },
+      "feasible_fraction": 0.0,
+      "feasible_games": 0,
+      "games": 16
+    }
+  },
+  "input_sha256": "a5b810b1a57db3ee058d15b8a81a25de65b1e27fd437e0cc4129450c56455b36",
+  "overall": {
+    "exact_shapley_fully_covered": 0,
+    "failed_condition_counts": {
+      "nonempty_coordinate_intervals": 267,
+      "nonnegative_pair_mass": 148,
+      "nonnegative_singletons": 65,
+      "nonnegative_triple_mass": 198,
+      "slice_lower_bound": 249,
+      "slice_upper_bound": 251
+    },
+    "feasible_fraction": 0.02197802197802198,
+    "feasible_games": 6,
+    "games": 273,
+    "max_player_width": {
+      "max": 1.9705945258299655e-05,
+      "median": 4.6127256870653194e-07,
+      "min": 1.4004689080551053e-07
+    },
+    "mean_player_width": {
+      "max": 1.692453578461439e-05,
+      "median": 4.6127256870653194e-07,
+      "min": 1.4004689080551053e-07
+    },
+    "normalized_sum_width": {
+      "max": 0.005589611324750803,
+      "median": 0.0007393757513446508,
+      "min": 0.00022164066472437708
+    },
+    "sum_player_width": {
+      "max": 0.00013539628627691513,
+      "median": 3.6901805496522555e-06,
+      "min": 1.1203751264440842e-06
+    }
+  },
+  "schema_version": 1,
+  "tolerance_multiplier": 1e-09
+}

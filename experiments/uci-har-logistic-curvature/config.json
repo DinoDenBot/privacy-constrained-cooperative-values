@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "clients": 8,
+  "role_seeds": [8501, 8502, 8503, 8504, 8505, 8506, 8507, 8508, 8509, 8510, 8511, 8512, 8513, 8514, 8515, 8516, 8517, 8518, 8519, 8520],
+  "role_salt": "pcv-uci-har-bounded-logistic-v1|",
+  "feature_radius": 1.0,
+  "local_update_clip": 0.2,
+  "checkpoint": {
+    "epochs": 100,
+    "learning_rate": 1.0,
+    "l2": 0.0001
+  },
+  "local": {
+    "epochs": 5,
+    "learning_rate": 0.5,
+    "l2": 0.0001
+  },
+  "epsilons": [0.25, 0.5, 1.0],
+  "primary_epsilon": 1.0,
+  "identity_tolerance": 1e-10,
+  "decision_tolerance": 1e-12,
+  "relative_denominator_floor": 1e-12,
+  "curvature": {
+    "bernstein_relative_tolerance": 1e-10,
+    "bernstein_absolute_tolerance": 1e-14,
+    "bernstein_maximum_splits": 10000,
+    "oracle_absolute_slack": 1e-15
+  },
+  "scientific_gates": {
+    "joint_coverage_rate_minimum": 1.0,
+    "positive_grand_worth_count_minimum": 16,
+    "median_shapley_l1_minimum": 0.002,
+    "median_efficient_relative_l1_width_strict_maximum": 0.25,
+    "sign_certification_rate_minimum": 0.8,
+    "pair_certification_rate_minimum": 0.8,
+    "top_client_certification_rate_minimum": 0.6
+  },
+  "inputs": {
+    "dataset": "UCI Human Activity Recognition Using Smartphones",
+    "hashes": "experiments/uci-har-diagnostic/input-hashes.json"
+  },
+  "resources": {
+    "target": "local",
+    "logical_cpus": 6,
+    "memory_bytes": 4294967296,
+    "runtime_seconds": 3600,
+    "output_bytes": 536870912,
+    "gpu": false,
+    "network_during_execution": false,
+    "estimated_cost_usd": 0.0
+  }
+}

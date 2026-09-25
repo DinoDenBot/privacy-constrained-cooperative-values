@@ -1,0 +1,51 @@
+{
+  "all_scientific_gates_passed": true,
+  "certificate_sha256": "f5976db422df4cf6c6b28bfb0d7412cca0fcbf526c2c1d54826d121ee417bfce",
+  "epsilon": 0.5,
+  "gates": {
+    "coverage": true,
+    "nontrivial_signal": true,
+    "pairs": true,
+    "relative_width": true,
+    "signs": true,
+    "top_client": true,
+    "useful_games": true
+  },
+  "methods": {
+    "authorized_public_clip": {
+      "games": 20,
+      "joint_coverage_rate": 1.0,
+      "median_efficient_relative_l1_width": 0.01240065137329667,
+      "median_midpoint_relative_l1_error": 7.763939676675385e-07,
+      "median_radius_to_oracle_ratio": 10554.277332623355,
+      "median_shapley_l1": 0.006238959395359762,
+      "pair_certification_rate": 0.9910714285714286,
+      "positive_grand_worth_count": 20,
+      "sign_certification_rate": 0.99375,
+      "top_client_certification_rate": 1.0
+    },
+    "oracle_bernstein": {
+      "games": 20,
+      "joint_coverage_rate": 1.0,
+      "median_efficient_relative_l1_width": 5.321575019789044e-07,
+      "median_midpoint_relative_l1_error": 7.763939676675385e-07,
+      "median_radius_to_oracle_ratio": 1.0,
+      "median_shapley_l1": 0.006238959395359762,
+      "pair_certification_rate": 1.0,
+      "positive_grand_worth_count": 20,
+      "sign_certification_rate": 1.0,
+      "top_client_certification_rate": 1.0
+    }
+  },
+  "schema_version": 1,
+  "thresholds": {
+    "joint_coverage_rate_minimum": 1.0,
+    "median_efficient_relative_l1_width_strict_maximum": 0.25,
+    "median_shapley_l1_minimum": 0.002,
+    "pair_certification_rate_minimum": 0.8,
+    "positive_grand_worth_count_minimum": 16,
+    "sign_certification_rate_minimum": 0.8,
+    "top_client_certification_rate_minimum": 0.6
+  },
+  "verdict": "supported"
+}

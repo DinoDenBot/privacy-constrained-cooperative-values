@@ -1,0 +1,113 @@
+{
+  "all_primary_scientific_gates_passed": false,
+  "certificate_input": {
+    "path": "/tmp/pcv-uci-har-logistic-certificates-20260910/certificates.json",
+    "sha256": "21a1c8dfcb0fef310fae3cd9d8e6c4ff2c5bd85031651ac38e849ed8ed25fa9a"
+  },
+  "environment": {
+    "numpy": "2.3.2",
+    "platform": "macOS-26.2-arm64-arm-64bit",
+    "python": "3.12.13 (main, Apr  7 2026, 21:09:58) [Clang 22.1.1 ]"
+  },
+  "gates": {
+    "coverage": true,
+    "nontrivial_signal": true,
+    "pairs": false,
+    "relative_width": true,
+    "signs": true,
+    "top_client": false,
+    "useful_games": true
+  },
+  "primary_epsilon": 1.0,
+  "schema_version": 1,
+  "summaries": {
+    "0.25": {
+      "authorized_public_clip": {
+        "games": 20,
+        "joint_coverage_rate": 1.0,
+        "median_efficient_relative_l1_width": 0.006530648412547208,
+        "median_midpoint_relative_l1_error": 5.809270375137178e-07,
+        "median_radius_to_oracle_ratio": 5110.683692282272,
+        "median_shapley_l1": 0.0014736695869117522,
+        "pair_certification_rate": 0.9857142857142858,
+        "positive_grand_worth_count": 20,
+        "sign_certification_rate": 1.0,
+        "top_client_certification_rate": 0.9
+      },
+      "oracle_bernstein": {
+        "games": 20,
+        "joint_coverage_rate": 1.0,
+        "median_efficient_relative_l1_width": 2.662185926480577e-07,
+        "median_midpoint_relative_l1_error": 5.809270375137178e-07,
+        "median_radius_to_oracle_ratio": 1.0,
+        "median_shapley_l1": 0.0014736695869117522,
+        "pair_certification_rate": 1.0,
+        "positive_grand_worth_count": 20,
+        "sign_certification_rate": 1.0,
+        "top_client_certification_rate": 1.0
+      }
+    },
+    "0.5": {
+      "authorized_public_clip": {
+        "games": 20,
+        "joint_coverage_rate": 1.0,
+        "median_efficient_relative_l1_width": 0.02619935286302015,
+        "median_midpoint_relative_l1_error": 2.3469804224467235e-06,
+        "median_radius_to_oracle_ratio": 5054.434925201998,
+        "median_shapley_l1": 0.002940424592260737,
+        "pair_certification_rate": 0.9625,
+        "positive_grand_worth_count": 20,
+        "sign_certification_rate": 1.0,
+        "top_client_certification_rate": 0.9
+      },
+      "oracle_bernstein": {
+        "games": 20,
+        "joint_coverage_rate": 1.0,
+        "median_efficient_relative_l1_width": 1.0896427115008914e-06,
+        "median_midpoint_relative_l1_error": 2.3469804224467235e-06,
+        "median_radius_to_oracle_ratio": 1.0,
+        "median_shapley_l1": 0.002940424592260737,
+        "pair_certification_rate": 1.0,
+        "positive_grand_worth_count": 20,
+        "sign_certification_rate": 1.0,
+        "top_client_certification_rate": 1.0
+      }
+    },
+    "1.0": {
+      "authorized_public_clip": {
+        "games": 20,
+        "joint_coverage_rate": 1.0,
+        "median_efficient_relative_l1_width": 0.1054160125903271,
+        "median_midpoint_relative_l1_error": 9.567509070008668e-06,
+        "median_radius_to_oracle_ratio": 4973.111671360981,
+        "median_shapley_l1": 0.005846694401660633,
+        "pair_certification_rate": 0.7964285714285714,
+        "positive_grand_worth_count": 20,
+        "sign_certification_rate": 1.0,
+        "top_client_certification_rate": 0.35
+      },
+      "oracle_bernstein": {
+        "games": 20,
+        "joint_coverage_rate": 1.0,
+        "median_efficient_relative_l1_width": 4.554953815580861e-06,
+        "median_midpoint_relative_l1_error": 9.567509070008668e-06,
+        "median_radius_to_oracle_ratio": 1.0,
+        "median_shapley_l1": 0.005846694401660633,
+        "pair_certification_rate": 1.0,
+        "positive_grand_worth_count": 20,
+        "sign_certification_rate": 1.0,
+        "top_client_certification_rate": 1.0
+      }
+    }
+  },
+  "thresholds": {
+    "joint_coverage_rate_minimum": 1.0,
+    "median_efficient_relative_l1_width_strict_maximum": 0.25,
+    "median_shapley_l1_minimum": 0.002,
+    "pair_certification_rate_minimum": 0.8,
+    "positive_grand_worth_count_minimum": 16,
+    "sign_certification_rate_minimum": 0.8,
+    "top_client_certification_rate_minimum": 0.6
+  },
+  "verdict": "contradicted"
+}
